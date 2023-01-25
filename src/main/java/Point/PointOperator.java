@@ -22,11 +22,11 @@ public final class PointOperator {
      * @param rotationMatrix Matrix by which to rotate
      */
     public static void rotate(Double[] vector, Double[][] rotationMatrix) {
-        Double[] vectorTemp = (Double[]) vector.clone();
+        Double[] vectorCopy = (Double[]) vector.clone();
         for (int i = 0; i < vector.length; i++) {
             vector[i] *= 0;
             for (int j = 0; j < vector.length; j++) {
-                vector[i] += vectorTemp[j] * rotationMatrix[i][j];
+                vector[i] += vectorCopy[j] * rotationMatrix[i][j];
             }
         }
     }
