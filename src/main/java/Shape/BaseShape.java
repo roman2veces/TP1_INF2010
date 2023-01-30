@@ -115,7 +115,8 @@ public class BaseShape implements Cloneable {
      */
     public BaseShape translate(Point2d translateVector) {
         coords.stream()
-                .map(point2d -> point2d.translate(translateVector));
+                .map(point2d -> point2d.translate(translateVector))
+                .collect(Collectors.toList());
         return this;
     }
 
@@ -125,7 +126,10 @@ public class BaseShape implements Cloneable {
      * @return Rotated shape
      */
     public BaseShape rotate(Double angle) {
-        return null;
+        coords.stream()
+                .map(point2d -> point2d.rotate(angle))
+                .collect(Collectors.toList());
+        return this;
     }
 
     /** TODO
