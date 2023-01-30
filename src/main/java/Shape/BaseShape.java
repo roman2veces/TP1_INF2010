@@ -84,7 +84,7 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape removeAll(Collection<Point2d> coords) {
-        coords.removeAll(coords);
+        this.coords.removeAll(coords);
         return this;
     }
 
@@ -169,27 +169,39 @@ public class BaseShape implements Cloneable {
      * @return Minimum X coordinate of the shape
      */
     public Double getMinX() {
-        return null;
+        try {
+            return coords.stream()
+                    .mapToDouble(point2d -> point2d.X())
+                    .min().getAsDouble();
+        } catch (Exception error) {
+            return Double.MAX_VALUE;
+        }
     }
 
     /** TODO
      * @return Minimum Y coordinate of the shape
      */
     public Double getMinY() {
-        return null;
+        try {
+            return coords.stream()
+                    .mapToDouble(point2d -> point2d.Y())
+                    .min().getAsDouble();
+        } catch (Exception error) {
+            return Double.MAX_VALUE;
+        }
     }
 
     /** TODO
      * @return 2D point containing the minimum X and Y coordinate of the shape
      */
     public Point2d getMinCoord() {
-        return null;
+        return new Point2d(getMinX(), getMinY());
     }
 
     /** TODO
      * @return Deep copy of the current shape
      */
     public BaseShape clone() {
-        return null;
+        return new BaseShape(coords);
     }
 }
