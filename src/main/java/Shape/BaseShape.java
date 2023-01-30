@@ -12,7 +12,7 @@ public class BaseShape implements Cloneable {
      * Create a BaseShape with empty coordinades
      */
     public BaseShape() {
-        this.coords = null;
+        this.coords = new ArrayList<Point2d>();
     }
 
     /** TODO
@@ -20,7 +20,10 @@ public class BaseShape implements Cloneable {
      * @param coords The collection of 2D points
      */
     public BaseShape(Collection<Point2d> coords) {
-        this();
+        this(); // This call the default constructor
+        coords.forEach(point2d -> {
+            this.add(point2d);
+        });
     }
 
     /** TODO
@@ -29,7 +32,8 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape add(Point2d coord) {
-        return null;
+        this.coords.add(coord.clone());
+        return this;
     }
 
     /** TODO
@@ -38,7 +42,8 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape add(BaseShape shape) {
-        return null;
+        this.addAll(shape.coords);
+        return this;
     }
 
     /** TODO
@@ -47,7 +52,10 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape addAll(Collection<Point2d> coords) {
-        return null;
+        coords.forEach(point2d -> {
+            this.add(point2d);
+        });
+        return this;
     }
 
     /** TODO
@@ -56,7 +64,8 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape remove(Point2d coord) {
-        return null;
+        this.coords.remove(coord);
+        return this;
     }
 
     /** TODO
@@ -65,7 +74,8 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape remove(BaseShape shape) {
-        return null;
+        this.removeAll(shape.coords);
+        return this;
     }
 
     /** TODO
@@ -74,7 +84,8 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape removeAll(Collection<Point2d> coords) {
-        return null;
+        this.coords.removeAll(coords);
+        return this;
     }
 
     /** TODO
@@ -82,7 +93,7 @@ public class BaseShape implements Cloneable {
      * @return Shallow copy of all coordinates contained by this BaseShape
      */
     public Collection<Point2d> getCoords() {
-        return null;
+        return new ArrayList<Point2d>(coords);
     }
 
     /** TODO
@@ -90,7 +101,11 @@ public class BaseShape implements Cloneable {
      * @return Deep copy of all coordinates contained by this BaseShape
      */
     public Collection<Point2d> cloneCoords() {
-        return null;
+        return coords.stream()
+                .map(point2d -> point2d.clone())
+                .collect(Collectors.toList());
+        // Collect: This is the way to get out of the streams world and obtain a concrete collection of values.
+        // is like a reduce function applied on the collection, but in this case we only apply a "toList" conversion
     }
 
     /** TODO
@@ -99,7 +114,9 @@ public class BaseShape implements Cloneable {
      * @return Translated shape
      */
     public BaseShape translate(Point2d translateVector) {
-        return null;
+        coords.stream()
+                .map(point2d -> point2d.translate(translateVector));
+        return this;
     }
 
     /** TODO
