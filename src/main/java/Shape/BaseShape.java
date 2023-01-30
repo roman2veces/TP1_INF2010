@@ -22,7 +22,7 @@ public class BaseShape implements Cloneable {
     public BaseShape(Collection<Point2d> coords) {
         this(); // This call the default constructor
         coords.forEach(point2d -> {
-            this.add(point2d);
+            add(point2d);
         });
     }
 
@@ -32,7 +32,7 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape add(Point2d coord) {
-        this.coords.add(coord.clone());
+        coords.add(coord.clone());
         return this;
     }
 
@@ -42,7 +42,7 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape add(BaseShape shape) {
-        this.addAll(shape.coords);
+        addAll(shape.coords);
         return this;
     }
 
@@ -53,7 +53,7 @@ public class BaseShape implements Cloneable {
      */
     public BaseShape addAll(Collection<Point2d> coords) {
         coords.forEach(point2d -> {
-            this.add(point2d);
+            add(point2d);
         });
         return this;
     }
@@ -64,7 +64,7 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape remove(Point2d coord) {
-        this.coords.remove(coord);
+        coords.remove(coord);
         return this;
     }
 
@@ -74,7 +74,7 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape remove(BaseShape shape) {
-        this.removeAll(shape.coords);
+        removeAll(shape.coords);
         return this;
     }
 
@@ -84,7 +84,7 @@ public class BaseShape implements Cloneable {
      * @return Updated BaseShape
      */
     public BaseShape removeAll(Collection<Point2d> coords) {
-        this.coords.removeAll(coords);
+        coords.removeAll(coords);
         return this;
     }
 
@@ -136,21 +136,33 @@ public class BaseShape implements Cloneable {
      * @return Maximum X coordinate of the shape
      */
     public Double getMaxX() {
-        return null;
+        try {
+            return coords.stream()
+                    .mapToDouble(point2d -> point2d.X())
+                    .max().getAsDouble();
+        } catch (Exception error) {
+            return -Double.MAX_VALUE;
+        }
     }
 
     /** TODO
      * @return Maximum Y coordinate of the shape
      */
     public Double getMaxY() {
-        return null;
+        try {
+            return coords.stream()
+                    .mapToDouble(point2d -> point2d.Y())
+                    .max().getAsDouble();
+        } catch (Exception error) {
+            return -Double.MAX_VALUE;
+        }
     }
 
     /** TODO
      * @return 2D Point containing the maximum X and Y coordinates of the shape
      */
     public Point2d getMaxCoord() {
-        return null;
+        return new Point2d(getMaxX(), getMaxY());
     }
 
     /** TODO
