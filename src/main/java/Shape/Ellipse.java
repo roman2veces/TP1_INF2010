@@ -11,7 +11,13 @@ public class Ellipse extends BaseShape {
      * @param heightDiameter Height of the Ellipse
      */
     public Ellipse(Double widthDiameter, Double heightDiameter) {
-
+        super();
+        for (double i = -(widthDiameter / 2); i <= (widthDiameter / 2); i+=0.5) {
+            this.add(new Point2d(i, 0.0));
+        }
+        for (double j = -(heightDiameter / 2); j <= (heightDiameter / 2); j+=0.5) {
+            this.add(new Point2d(0.0, j));
+        }
     }
 
     /** TODO
@@ -19,7 +25,7 @@ public class Ellipse extends BaseShape {
      * @param dimensions 2D point containing the width and height of the Ellipse
      */
     public Ellipse(Point2d dimensions) {
-
+        this(dimensions.X(), dimensions.Y());
     }
 
     /**
@@ -27,7 +33,8 @@ public class Ellipse extends BaseShape {
      * @param coords Collection of 2D points
      */
     private Ellipse(Collection<Point2d> coords) {
-
+        super();
+        this.addAll(coords);
     }
 
     /** TODO
@@ -37,7 +44,8 @@ public class Ellipse extends BaseShape {
      */
     @Override
     public Ellipse translate(Point2d point) {
-        return null;
+        super.translate(point);
+        return this;
     }
 
     /** TODO
@@ -47,7 +55,8 @@ public class Ellipse extends BaseShape {
      */
     @Override
     public Ellipse rotate(Double angle) {
-        return null;
+        super.rotate(angle);
+        return this;
     }
 
     /** TODO
@@ -55,6 +64,6 @@ public class Ellipse extends BaseShape {
      */
     @Override
     public Ellipse clone() {
-        return null;
+        return new Ellipse(this.getCoords());
     }
 }

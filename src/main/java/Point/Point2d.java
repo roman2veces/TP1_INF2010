@@ -71,10 +71,8 @@ public class Point2d extends AbstractPoint {
      * @return Rotated point
      */
     public Point2d rotate(Double angle) {
-        double x = vector[X];
-        double y = vector[Y];
-        vector[X] = x * Math.cos(angle) - y * Math.sin(angle);
-        vector[Y] = x * Math.sin(angle) + y * Math.cos(angle);
+        Double[][] rotationMatrix = {{Math.cos(angle), -Math.sin(angle)}, {Math.sin(angle), Math.cos(angle)}};
+        PointOperator.rotate(vector, rotationMatrix);
         return this;
     }
 
