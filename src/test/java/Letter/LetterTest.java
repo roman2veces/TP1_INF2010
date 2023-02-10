@@ -37,6 +37,7 @@ public class LetterTest {
 
         String input = "commentcava";
         boolean foundEnoughChars = findMatchingChars(output, input).doubleValue() > input.length() / 2.0;
+        //foundEnoughChars = true;
 
         try {
             Desktop dt = Desktop.getDesktop();

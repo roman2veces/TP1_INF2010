@@ -44,7 +44,8 @@ public class Rectangle extends BaseShape {
      */
     @Override
     public Rectangle translate(Point2d point) {
-        return this.translate(point);
+        super.translate(point);
+        return this;
     }
 
     /** TODO
@@ -54,7 +55,8 @@ public class Rectangle extends BaseShape {
      */
     @Override
     public Rectangle rotate(Double angle) {
-        return this.rotate(angle);
+        super.rotate(angle);
+        return this;
     }
 
     /** TODO

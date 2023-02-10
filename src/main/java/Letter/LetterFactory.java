@@ -17,7 +17,11 @@ public final class LetterFactory {
      * @return BaseShape containing the letter T
      */
     public static BaseShape create_T() {
-        return null;
+        BaseShape lettreT = new BaseShape();
+        lettreT.add(new Rectangle(halfStripeThickness, maxHeight));
+        lettreT.add(new Rectangle(maxWidth, halfStripeThickness)
+                .translate(new Point2d(0.0, -maxWidth - halfStripeThickness - 1)));
+        return lettreT;
     }
 
     /** TODO
@@ -25,7 +29,15 @@ public final class LetterFactory {
      * @return BaseShape containing the letter E
      */
     public static BaseShape create_E() {
-        return null;
+        BaseShape lettreE = new BaseShape();
+        lettreE.add(new Rectangle(halfStripeThickness, maxHeight));
+        lettreE.add(new Rectangle(maxWidth, halfStripeThickness)
+                .translate(new Point2d(maxWidth - stripeThickness - 15, -maxWidth - halfStripeThickness - 1)));
+        lettreE.add(new Rectangle(maxWidth, halfStripeThickness)
+                .translate(new Point2d(maxWidth - stripeThickness - 15, maxWidth + halfStripeThickness + 1)));
+        lettreE.add(new Rectangle(maxWidth, halfStripeThickness)
+                .translate(new Point2d(maxWidth - stripeThickness - 15, 0.0)));
+        return lettreE;
     }
 
     /** TODO
@@ -33,7 +45,9 @@ public final class LetterFactory {
      * @return BaseShape containing the letter O
      */
     public static BaseShape create_O() {
-        return null;
+        BaseShape lettreO = new BaseShape();
+        lettreO.add(new Ellipse(maxWidth, maxHeight));
+        return lettreO;
     }
 
     /** TODO
@@ -41,7 +55,9 @@ public final class LetterFactory {
      * @return BaseShape containing the letter C
      */
     public static BaseShape create_C() {
-        return null;
+        BaseShape lettreC = new BaseShape();
+        lettreC.add(new Ellipse(maxWidth, maxHeight));
+        return lettreC;
     }
 
     /** TODO
@@ -49,7 +65,15 @@ public final class LetterFactory {
      * @return BaseShape containing the letter A
      */
     public static BaseShape create_A() {
-        return null;
+        BaseShape lettreA = new BaseShape();
+        lettreA.add((new Rectangle(halfStripeThickness, maxHeight)
+                .rotate(0.20)));
+        lettreA.add((new Rectangle(halfStripeThickness, maxHeight)
+                .rotate(-0.20))
+                .translate(new Point2d(halfMaxWidth, 0.0)));
+        lettreA.add(new Rectangle(halfMaxWidth, halfStripeThickness)
+                .translate(new Point2d(halfStripeThickness + 3, 0.0)));
+        return lettreA;
     }
 
     /** TODO
@@ -57,7 +81,13 @@ public final class LetterFactory {
      * @return BaseShape containing the letter V
      */
     public static BaseShape create_V() {
-        return null;
+        BaseShape lettreV = new BaseShape();
+        lettreV.add((new Rectangle(halfStripeThickness, maxHeight)
+                .rotate(-0.20)));
+        lettreV.add((new Rectangle(halfStripeThickness, maxHeight)
+                .rotate(0.20))
+                .translate(new Point2d(halfMaxWidth, 0.0)));
+        return lettreV;
     }
 
     /** TODO
@@ -65,7 +95,14 @@ public final class LetterFactory {
      * @return BaseShape containing the letter N
      */
     public static BaseShape create_N() {
-        return null;
+        BaseShape lettreN = new BaseShape();
+        lettreN.add(new Rectangle(halfStripeThickness, maxHeight));
+        lettreN.add(new Rectangle(halfStripeThickness, maxHeight)
+                .translate(new Point2d(maxWidth + 1.5, 0.0)));
+        lettreN.add((new Rectangle(halfStripeThickness, maxHeight + 3)
+                .translate(new Point2d(halfMaxWidth - 2, 10.0)))
+                .rotate(-0.40));
+        return lettreN;
     }
 
     /** TODO
@@ -73,7 +110,17 @@ public final class LetterFactory {
      * @return BaseShape containing the letter M
      */
     public static BaseShape create_M() {
-        return null;
+        BaseShape lettreM = new BaseShape();
+        lettreM.add(new Rectangle(halfStripeThickness, maxHeight));
+        lettreM.add(new Rectangle(halfStripeThickness, maxHeight)
+                .translate(new Point2d(maxWidth, 0.0)));
+        lettreM.add((new Rectangle(halfStripeThickness, halfMaxHeight)
+                .translate(new Point2d(halfMaxWidth, -halfMaxWidth)))
+                .rotate(-0.35));
+        lettreM.add((new Rectangle(halfStripeThickness, halfMaxHeight)
+                .translate(new Point2d(halfMaxWidth - 3, -halfMaxWidth - 21)))
+                .rotate(0.35));
+        return lettreM;
     }
 
 }

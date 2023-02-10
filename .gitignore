@@ -8,3 +8,4 @@ fra.traineddata
 build.gradle
 gradlew.bat
 settings.gradle
+*.jpg

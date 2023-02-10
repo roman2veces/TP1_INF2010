@@ -12,11 +12,12 @@ public class Ellipse extends BaseShape {
      */
     public Ellipse(Double widthDiameter, Double heightDiameter) {
         super();
-        for (double i = -(widthDiameter / 2); i <= (widthDiameter / 2); i+=0.5) {
-            this.add(new Point2d(i, 0.0));
-        }
-        for (double j = -(heightDiameter / 2); j <= (heightDiameter / 2); j+=0.5) {
-            this.add(new Point2d(0.0, j));
+        for (Double i = -(widthDiameter / 2); i <= (widthDiameter / 2); i+=0.5) {
+            for (Double j = -(heightDiameter / 2); j <= (heightDiameter / 2); j+=0.5) {
+                if (((Math.pow(i, 2) / Math.pow(widthDiameter/2, 2)) + (Math.pow(j, 2) / Math.pow(heightDiameter/2, 2))) <= 1.0) {
+                    this.add(new Point2d(i, j));
+                }
+            }
         }
     }
 
